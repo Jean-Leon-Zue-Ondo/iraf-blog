@@ -42,9 +42,10 @@ export class ArticlesService {
 
   getResearchers(): Researcher[] {
     return [
-      { initials: 'AM', name: 'Dr. A. Moussavou', role: 'Agronomie · Génétique végétale', avatarClass: 'av-green' },
-      { initials: 'BO', name: 'Dr. B. Ondo',      role: 'Sciences forestières',            avatarClass: 'av-teal'  },
-      { initials: 'CN', name: 'Pr. C. Ndong',     role: 'Botanique · Taxonomie',           avatarClass: 'av-amber' },
+      { initials: 'AM', name: 'Dr. A. Moussavou',  role: 'Agronomie · Génétique végétale',                       avatarClass: 'av-green' },
+      { initials: 'BO', name: 'Dr. B. Ondo',       role: 'Sciences forestières',                                  avatarClass: 'av-teal'  },
+      { initials: 'CN', name: 'Pr. C. Ndong',      role: 'Botanique · Taxonomie',                                 avatarClass: 'av-amber' },
+      { initials: 'JZ', name: 'Dr. J-L Zue Ondo', role: 'Biologie · Écologie des forêts et des agrosystèmes',   avatarClass: 'av-sage'  },
     ];
   }
 }
