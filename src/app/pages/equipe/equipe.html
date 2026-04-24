@@ -1,0 +1,17 @@
+<div class="page-container">
+  <div class="page-header">
+    <div class="page-eyebrow">Notre équipe scientifique</div>
+    <h1 class="page-title">Équipe de Recherche</h1>
+    <p class="page-desc">Des chercheurs engagés pour le développement durable de l'agriculture et des forêts d'Afrique centrale.</p>
+  </div>
+
+  <div class="team-grid">
+    @for (r of researchers; track r.name) {
+      <div class="team-card">
+        <div class="team-avatar" [class]="r.avatarClass">{{ r.initials }}</div>
+        <div class="team-name">{{ r.name }}</div>
+        <div class="team-role">{{ r.role }}</div>
+      </div>
+    }
+  </div>
+</div>

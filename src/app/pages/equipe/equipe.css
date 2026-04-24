@@ -1,0 +1,84 @@
+.page-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 3rem;
+}
+
+.page-header {
+  margin-bottom: 3rem;
+  border-bottom: 2px solid var(--iraf-green-pale);
+  padding-bottom: 2rem;
+}
+
+.page-eyebrow {
+  font-size: 11px;
+  font-weight: 500;
+  color: var(--iraf-green-light);
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  margin-bottom: 12px;
+}
+
+.page-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 36px;
+  font-weight: 700;
+  color: #1a2e0a;
+  margin-bottom: 12px;
+}
+
+.page-desc {
+  font-family: 'Source Serif 4', serif;
+  font-size: 16px;
+  color: #4a5a3a;
+  line-height: 1.8;
+  max-width: 600px;
+}
+
+.team-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+}
+
+.team-card {
+  background: white;
+  border: 1px solid #dde8cc;
+  border-radius: 14px;
+  padding: 2rem;
+  text-align: center;
+  transition: border-color 0.15s;
+}
+
+.team-card:hover { border-color: var(--iraf-green-mid); }
+
+.team-avatar {
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 22px;
+  font-weight: 700;
+  margin: 0 auto 1rem;
+}
+
+.av-green { background: #c0dd97; color: #27500A; }
+.av-teal  { background: #9FE1CB; color: #085041; }
+.av-amber { background: #FAC775; color: #633806; }
+
+.team-name {
+  font-family: 'Playfair Display', serif;
+  font-size: 16px;
+  font-weight: 600;
+  color: #1a2e0a;
+  margin-bottom: 6px;
+}
+
+.team-role { font-size: 13px; color: #9aaa8a; }
+
+@media (max-width: 900px) {
+  .page-container { padding: 2rem; }
+  .team-grid { grid-template-columns: 1fr; }
+}

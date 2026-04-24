@@ -1,0 +1,28 @@
+.section-header {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  margin-bottom: 1.5rem;
+  border-bottom: 2px solid var(--iraf-green-pale);
+  padding-bottom: 12px;
+}
+
+.section-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 22px;
+  font-weight: 700;
+  color: #1a2e0a;
+}
+
+.see-all {
+  font-size: 12px;
+  color: var(--iraf-green-light);
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.article-list-items {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}

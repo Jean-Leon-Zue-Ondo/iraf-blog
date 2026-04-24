@@ -1,0 +1,13 @@
+.banner {
+  background: var(--iraf-green);
+  color: white;
+  text-align: center;
+  padding: 8px 2rem;
+  font-size: 12px;
+  letter-spacing: 0.3px;
+}
+
+.banner span {
+  color: #c0dd97;
+  font-weight: 600;
+}

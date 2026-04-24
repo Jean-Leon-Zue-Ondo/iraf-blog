@@ -1,0 +1,17 @@
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  --iraf-green:       #3B6D11;
+  --iraf-green-light: #639922;
+  --iraf-green-pale:  #EAF3DE;
+  --iraf-green-mid:   #97C459;
+  --iraf-cream:       #faf8f2;
+}
+
+body {
+  font-family: 'DM Sans', sans-serif;
+  background: var(--iraf-cream);
+  color: #1a1a1a;
+}
+
+a { text-decoration: none; }

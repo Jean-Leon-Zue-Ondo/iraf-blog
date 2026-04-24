@@ -1,0 +1,44 @@
+.article-mini {
+  background: white;
+  border: 1px solid #dde8cc;
+  border-radius: 12px;
+  padding: 1rem 1.25rem;
+  display: flex;
+  gap: 14px;
+  align-items: flex-start;
+  text-decoration: none;
+  transition: border-color 0.15s;
+}
+
+.article-mini:hover { border-color: var(--iraf-green-mid); }
+
+.mini-num {
+  font-family: 'Playfair Display', serif;
+  font-size: 24px;
+  font-weight: 700;
+  color: #c0dd97;
+  line-height: 1;
+  min-width: 30px;
+}
+
+.mini-content { flex: 1; }
+
+.mini-tag {
+  font-size: 10px;
+  color: var(--iraf-green-light);
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 4px;
+}
+
+.mini-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 14px;
+  font-weight: 600;
+  color: #1a2e0a;
+  line-height: 1.4;
+  margin-bottom: 4px;
+}
+
+.mini-meta { font-size: 11px; color: #9aaa8a; }

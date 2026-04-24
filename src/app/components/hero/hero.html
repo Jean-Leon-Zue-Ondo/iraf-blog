@@ -1,0 +1,23 @@
+<section class="hero">
+  <div>
+    <div class="hero-eyebrow">Science · Nature · Innovation</div>
+    <h1 class="hero-title">
+      Cultiver le savoir,<br>
+      <span>préserver la forêt</span>
+    </h1>
+    <p class="hero-desc">
+      L'IRAF conduit des recherches scientifiques de pointe pour le développement
+      durable de l'agriculture et de la foresterie en Afrique centrale.
+    </p>
+    <a routerLink="/recherches" class="hero-btn">Découvrir nos travaux →</a>
+  </div>
+
+  <div class="hero-stats">
+    @for (stat of stats; track stat.label) {
+      <div class="stat-card">
+        <div class="stat-num">{{ stat.num }}</div>
+        <div class="stat-label">{{ stat.label }}</div>
+      </div>
+    }
+  </div>
+</section>

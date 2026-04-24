@@ -1,0 +1,65 @@
+.site-header {
+  background: white;
+  border-bottom: 1px solid #e5e5e5;
+  padding: 0 3rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 72px;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.logo-area {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.logo-img {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.logo-name {
+  font-family: 'Playfair Display', serif;
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--iraf-green);
+  display: block;
+}
+
+.logo-tagline {
+  font-size: 10px;
+  color: #888;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  display: block;
+  margin-top: 2px;
+}
+
+nav { display: flex; gap: 4px; }
+
+nav a {
+  font-size: 13px;
+  font-weight: 500;
+  color: #555;
+  text-decoration: none;
+  padding: 8px 14px;
+  border-radius: 6px;
+  transition: background 0.15s, color 0.15s;
+}
+
+nav a:hover,
+nav a.active {
+  background: var(--iraf-green-pale);
+  color: var(--iraf-green);
+}
+
+@media (max-width: 900px) {
+  .site-header { padding: 0 1rem; }
+  nav { display: none; }
+}

@@ -1,0 +1,32 @@
+.sidebar-card {
+  background: white;
+  border: 1px solid #dde8cc;
+  border-radius: 14px;
+  padding: 1.25rem;
+}
+
+.sidebar-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 16px;
+  font-weight: 700;
+  color: #1a2e0a;
+  margin-bottom: 1rem;
+  padding-bottom: 8px;
+  border-bottom: 1px solid #eef4e4;
+}
+
+.topic-tag {
+  display: inline-block;
+  background: var(--iraf-green-pale);
+  color: var(--iraf-green);
+  font-size: 12px;
+  padding: 5px 12px;
+  border-radius: 20px;
+  margin: 3px;
+  cursor: pointer;
+  border: 1px solid #c0dd97;
+  text-decoration: none;
+  transition: background 0.15s;
+}
+
+.topic-tag:hover { background: #c0dd97; }

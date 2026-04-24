@@ -1,0 +1,22 @@
+.main-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 3rem;
+  display: grid;
+  grid-template-columns: 1fr 320px;
+  gap: 3rem;
+  align-items: start;
+}
+
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+@media (max-width: 900px) {
+  .main-content {
+    grid-template-columns: 1fr;
+    padding: 2rem;
+  }
+}

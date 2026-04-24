@@ -1,0 +1,13 @@
+<div class="page-container">
+  <div class="page-header">
+    <div class="page-eyebrow">Bibliothèque scientifique</div>
+    <h1 class="page-title">Publications</h1>
+    <p class="page-desc">Retrouvez l'ensemble des travaux scientifiques publiés par les chercheurs de l'IRAF.</p>
+  </div>
+
+  <div class="pub-list">
+    @for (article of articles; track article.id; let i = $index) {
+      <app-article-mini [article]="article" [index]="i" />
+    }
+  </div>
+</div>

@@ -1,0 +1,19 @@
+<main>
+  <div class="section-header">
+    <h2 class="section-title">À la une</h2>
+    <a routerLink="/publications" class="see-all">Tous les articles →</a>
+  </div>
+
+  <app-article-featured [article]="featured" />
+
+  <div class="section-header" style="margin-top: 2.5rem;">
+    <h2 class="section-title">Dernières publications</h2>
+    <a routerLink="/publications" class="see-all">Voir tout →</a>
+  </div>
+
+  <div class="article-list-items">
+    @for (article of articles; track article.id; let i = $index) {
+      <app-article-mini [article]="article" [index]="i" />
+    }
+  </div>
+</main>

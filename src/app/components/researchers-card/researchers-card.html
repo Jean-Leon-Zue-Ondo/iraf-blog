@@ -1,0 +1,12 @@
+<div class="sidebar-card">
+  <div class="sidebar-title">Chercheurs actifs</div>
+  @for (r of researchers; track r.name) {
+    <div class="researcher-item">
+      <div class="researcher-avatar" [class]="r.avatarClass">{{ r.initials }}</div>
+      <div>
+        <div class="researcher-name">{{ r.name }}</div>
+        <div class="researcher-role">{{ r.role }}</div>
+      </div>
+    </div>
+  }
+</div>
