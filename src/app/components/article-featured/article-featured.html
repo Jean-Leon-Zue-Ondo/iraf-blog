@@ -17,7 +17,7 @@
         <span class="meta-dot"></span>
         <span>{{ article.readTime }}</span>
       </div>
-      <a href="#" class="read-more">Lire l'article complet →</a>
+      <a [routerLink]="['/publications', article.id]" class="read-more">Lire l'article complet →</a>
     </div>
   </div>
 </div>

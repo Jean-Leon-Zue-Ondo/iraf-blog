@@ -3,6 +3,7 @@ export interface Article {
   tag: string;
   title: string;
   excerpt?: string;
+  content?: string[];
   author: string;
   date: string;
   readTime: string;

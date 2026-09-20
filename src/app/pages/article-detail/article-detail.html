@@ -1,0 +1,30 @@
+@if (article) {
+  <div class="page-container">
+    <a routerLink="/publications" class="back-link">← Retour aux publications</a>
+
+    <div class="article-detail-header">
+      <span class="article-tag">{{ article.tag }}</span>
+      <h1 class="article-detail-title">{{ article.title }}</h1>
+      <div class="article-meta">
+        <span>{{ article.author }}</span>
+        <span class="meta-dot"></span>
+        <span>{{ article.date }}</span>
+        <span class="meta-dot"></span>
+        <span>{{ article.readTime }}</span>
+      </div>
+    </div>
+
+    <div class="article-detail-body">
+      @for (paragraph of article.content; track paragraph) {
+        <p>{{ paragraph }}</p>
+      } @empty {
+        <p>{{ article.excerpt }}</p>
+      }
+    </div>
+  </div>
+} @else {
+  <div class="page-container">
+    <p class="not-found">Article introuvable.</p>
+    <a routerLink="/publications" class="back-link">← Retour aux publications</a>
+  </div>
+}
