@@ -1,7 +1,8 @@
-import { Component, inject } from '@angular/core';
+import { Component, computed, inject } from '@angular/core';
 import { ActivatedRoute, RouterLink } from '@angular/router';
+import { toSignal } from '@angular/core/rxjs-interop';
+import { map } from 'rxjs/operators';
 import { ArticlesService } from '../../services/articles.service';
-import { Article } from '../../models/article.model';
 
 @Component({
   selector: 'app-article-detail',
@@ -14,5 +15,7 @@ export class ArticleDetailComponent {
   private route = inject(ActivatedRoute);
   private svc = inject(ArticlesService);
 
-  article: Article | undefined = this.svc.getArticleById(Number(this.route.snapshot.paramMap.get('id')));
+  private id = toSignal(this.route.paramMap.pipe(map((params) => params.get('id') ?? '')), { initialValue: '' });
+
+  article = computed(() => this.svc.articles().find((a) => a.id === this.id()));
 }

@@ -6,7 +6,7 @@
   </div>
 
   <div class="pub-list">
-    @for (article of articles; track article.id; let i = $index) {
+    @for (article of articles(); track article.id; let i = $index) {
       <app-article-mini [article]="article" [index]="i" />
     }
   </div>

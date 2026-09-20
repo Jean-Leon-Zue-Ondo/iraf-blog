@@ -1,0 +1,87 @@
+.admin-login-container {
+  min-height: 60vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 3rem 1.5rem;
+}
+
+.admin-card {
+  background: white;
+  border: 1px solid #dde8cc;
+  border-radius: 14px;
+  padding: 2rem;
+  width: 100%;
+  max-width: 360px;
+}
+
+.admin-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 24px;
+  font-weight: 700;
+  color: #1a2e0a;
+  margin-bottom: 8px;
+}
+
+.admin-desc {
+  font-family: 'Source Serif 4', serif;
+  font-size: 14px;
+  color: #6a7a5a;
+  line-height: 1.7;
+  margin-bottom: 1.5rem;
+}
+
+.admin-desc code {
+  background: var(--iraf-green-pale);
+  padding: 1px 6px;
+  border-radius: 4px;
+  font-size: 12px;
+}
+
+.admin-field {
+  display: block;
+  margin-bottom: 1rem;
+}
+
+.admin-field span {
+  display: block;
+  font-size: 12px;
+  font-weight: 500;
+  color: #4a5a3a;
+  margin-bottom: 6px;
+}
+
+.admin-field input {
+  width: 100%;
+  padding: 10px 12px;
+  border-radius: 8px;
+  border: 1px solid #dde8cc;
+  font-size: 14px;
+  font-family: 'DM Sans', sans-serif;
+  outline: none;
+}
+
+.admin-field input:focus { border-color: var(--iraf-green-light); }
+
+.admin-error {
+  color: #b23c3c;
+  font-size: 13px;
+  margin-bottom: 1rem;
+}
+
+.admin-btn {
+  width: 100%;
+  padding: 11px;
+  background: var(--iraf-green);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.15s;
+  font-family: 'DM Sans', sans-serif;
+}
+
+.admin-btn:hover:not(:disabled) { background: var(--iraf-green-light); }
+.admin-btn:disabled { opacity: 0.6; cursor: not-allowed; }

@@ -13,6 +13,6 @@ import { ArticleMiniComponent } from '../article-mini/article-mini';
 })
 export class ArticleListComponent {
   private svc = inject(ArticlesService);
-  featured = this.svc.getFeaturedArticle();
-  articles = this.svc.getRecentArticles();
+  featured = this.svc.featured;
+  articles = this.svc.recentArticles;
 }

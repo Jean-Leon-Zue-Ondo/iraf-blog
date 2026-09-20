@@ -11,5 +11,5 @@ import { ArticleMiniComponent } from '../../components/article-mini/article-mini
 })
 export class PublicationsComponent {
   private svc = inject(ArticlesService);
-  articles = this.svc.getRecentArticles();
+  articles = this.svc.recentArticles;
 }

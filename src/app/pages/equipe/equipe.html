@@ -6,7 +6,7 @@
   </div>
 
   <div class="team-grid">
-    @for (r of researchers; track r.name) {
+    @for (r of researchers(); track r.id) {
       <div class="team-card">
         <div class="team-avatar" [class]="r.avatarClass">{{ r.initials }}</div>
         <div class="team-name">{{ r.name }}</div>

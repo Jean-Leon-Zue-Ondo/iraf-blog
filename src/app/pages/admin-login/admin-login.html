@@ -1,0 +1,35 @@
+<div class="admin-login-container">
+  @if (!configured) {
+    <div class="admin-card">
+      <h1 class="admin-title">Configuration requise</h1>
+      <p class="admin-desc">
+        La page admin nécessite un projet Firebase. Ouvre
+        <code>src/app/firebase.config.ts</code> et suis les instructions
+        en commentaire pour y renseigner tes clés de projet.
+      </p>
+    </div>
+  } @else {
+    <form class="admin-card" (ngSubmit)="submit()">
+      <h1 class="admin-title">Connexion admin</h1>
+      <p class="admin-desc">Accès réservé à l'équipe IRAF.</p>
+
+      <label class="admin-field">
+        <span>E-mail</span>
+        <input type="email" name="email" [(ngModel)]="email" required autocomplete="username" />
+      </label>
+
+      <label class="admin-field">
+        <span>Mot de passe</span>
+        <input type="password" name="password" [(ngModel)]="password" required autocomplete="current-password" />
+      </label>
+
+      @if (error()) {
+        <p class="admin-error">{{ error() }}</p>
+      }
+
+      <button type="submit" class="admin-btn" [disabled]="loading()">
+        {{ loading() ? 'Connexion…' : 'Se connecter' }}
+      </button>
+    </form>
+  }
+</div>
