@@ -28,12 +28,12 @@
  * /admin restera inutilisable.
  */
 export const firebaseConfig = {
-  apiKey: 'REMPLACER_API_KEY',
-  authDomain: 'REMPLACER_PROJET.firebaseapp.com',
-  projectId: 'REMPLACER_PROJET',
-  storageBucket: 'REMPLACER_PROJET.appspot.com',
-  messagingSenderId: 'REMPLACER_SENDER_ID',
-  appId: 'REMPLACER_APP_ID',
+  apiKey: 'AIzaSyD1JPzJ9HoReiBzw3vwvVPw1vqh7om735E',
+  authDomain: 'iraf-blog.firebaseapp.com',
+  projectId: 'iraf-blog',
+  storageBucket: 'iraf-blog.firebasestorage.app',
+  messagingSenderId: '836853684948',
+  appId: '1:836853684948:web:beb1ec05cc4c5af579b941',
 };
 
 export function isFirebaseConfigured(): boolean {
