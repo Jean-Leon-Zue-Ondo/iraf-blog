@@ -45,12 +45,12 @@
       </label>
 
       <label class="admin-field">
-        <span>Image de couverture</span>
-        <input type="file" accept="image/*" (change)="onArticleImageSelected($event)" />
+        <span>Lien de l'image de couverture (optionnel — héberge-la sur Imgur, Drive public, etc.)</span>
+        <input type="url" name="imageUrl" [(ngModel)]="articleForm.imageUrl" placeholder="https://..." />
       </label>
 
-      @if (articleImagePreview()) {
-        <img [src]="articleImagePreview()" alt="Aperçu de l'image" class="admin-image-preview" />
+      @if (articleForm.imageUrl) {
+        <img [src]="articleForm.imageUrl" alt="Aperçu de l'image" class="admin-image-preview" />
       }
 
       <label class="admin-field">
