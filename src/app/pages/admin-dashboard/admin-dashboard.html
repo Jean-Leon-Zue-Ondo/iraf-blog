@@ -44,6 +44,20 @@
         <textarea name="contentText" [(ngModel)]="articleForm.contentText" rows="5"></textarea>
       </label>
 
+      <label class="admin-field">
+        <span>Image de couverture</span>
+        <input type="file" accept="image/*" (change)="onArticleImageSelected($event)" />
+      </label>
+
+      @if (articleImagePreview()) {
+        <img [src]="articleImagePreview()" alt="Aperçu de l'image" class="admin-image-preview" />
+      }
+
+      <label class="admin-field">
+        <span>Lien vers la publication / l'article en ligne (optionnel)</span>
+        <input type="url" name="sourceUrl" [(ngModel)]="articleForm.sourceUrl" placeholder="https://..." />
+      </label>
+
       <label class="admin-checkbox">
         <input type="checkbox" name="featured" [(ngModel)]="articleForm.featured" />
         <span>Mettre à la une (page d'accueil)</span>

@@ -94,6 +94,14 @@
 .admin-field textarea:focus,
 .admin-field select:focus { border-color: var(--iraf-green-light); }
 
+.admin-image-preview {
+  width: 100%;
+  max-height: 220px;
+  object-fit: cover;
+  border-radius: 10px;
+  margin-bottom: 1.25rem;
+}
+
 .admin-checkbox {
   display: flex;
   align-items: center;

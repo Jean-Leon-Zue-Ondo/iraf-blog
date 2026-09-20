@@ -1,7 +1,9 @@
 <div class="article-featured">
   <div class="article-img-placeholder">
-    <img src="Img_iraf_01.jpg" alt="Amélioration de la résistance au stress hydrique chez le manioc au Gabon" />
-    <span class="article-img-tag">Agronomie</span>
+    @if (article.imageUrl) {
+      <img [src]="article.imageUrl" [alt]="article.title" />
+    }
+    <span class="article-img-tag">{{ article.tag }}</span>
   </div>
   <div class="article-body">
     <div>

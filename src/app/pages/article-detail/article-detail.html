@@ -14,6 +14,10 @@
       </div>
     </div>
 
+    @if (a.imageUrl) {
+      <img class="article-detail-image" [src]="a.imageUrl" [alt]="a.title" />
+    }
+
     <div class="article-detail-body">
       @for (paragraph of a.content; track paragraph) {
         <p>{{ paragraph }}</p>
@@ -21,6 +25,12 @@
         <p>{{ a.excerpt }}</p>
       }
     </div>
+
+    @if (a.sourceUrl) {
+      <a [href]="a.sourceUrl" target="_blank" rel="noopener" class="source-link">
+        Voir la publication en ligne →
+      </a>
+    }
   </div>
 } @else {
   <div class="page-container">

@@ -22,13 +22,22 @@ export class AdminDashboardComponent {
 
   avatarClasses: Researcher['avatarClass'][] = ['av-green', 'av-teal', 'av-amber', 'av-sage', 'av-olive', 'av-sky'];
 
-  articleForm = { tag: '', title: '', excerpt: '', contentText: '', author: '', date: '', readTime: '', featured: false };
+  articleForm = { tag: '', title: '', excerpt: '', contentText: '', author: '', date: '', readTime: '', sourceUrl: '', featured: false };
   researcherForm = { initials: '', name: '', role: '', avatarClass: 'av-green' as Researcher['avatarClass'] };
+
+  articleImageFile: File | null = null;
+  articleImagePreview = signal<string | null>(null);
 
   articleError = signal<string | null>(null);
   articleSaving = signal(false);
   researcherError = signal<string | null>(null);
   researcherSaving = signal(false);
+
+  onArticleImageSelected(event: Event): void {
+    const file = (event.target as HTMLInputElement).files?.[0] ?? null;
+    this.articleImageFile = file;
+    this.articleImagePreview.set(file ? URL.createObjectURL(file) : null);
+  }
 
   async submitArticle(): Promise<void> {
     this.articleError.set(null);
@@ -38,6 +47,11 @@ export class AdminDashboardComponent {
         .split('\n')
         .map((p) => p.trim())
         .filter(Boolean);
+
+      const imageUrl = this.articleImageFile
+        ? await this.svc.uploadArticleImage(this.articleImageFile)
+        : '';
+
       await this.svc.addArticle({
         tag: this.articleForm.tag,
         title: this.articleForm.title,
@@ -46,9 +60,13 @@ export class AdminDashboardComponent {
         author: this.articleForm.author,
         date: this.articleForm.date,
         readTime: this.articleForm.readTime,
+        imageUrl,
+        sourceUrl: this.articleForm.sourceUrl,
         featured: this.articleForm.featured,
       });
-      this.articleForm = { tag: '', title: '', excerpt: '', contentText: '', author: '', date: '', readTime: '', featured: false };
+      this.articleForm = { tag: '', title: '', excerpt: '', contentText: '', author: '', date: '', readTime: '', sourceUrl: '', featured: false };
+      this.articleImageFile = null;
+      this.articleImagePreview.set(null);
     } catch (e) {
       this.articleError.set(e instanceof Error ? e.message : 'Erreur lors de l\'enregistrement.');
     } finally {

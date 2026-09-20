@@ -9,7 +9,8 @@ import {
   query,
   serverTimestamp,
 } from 'firebase/firestore';
-import { db } from './firebase-client';
+import { getDownloadURL, ref, uploadBytes } from 'firebase/storage';
+import { db, storage } from './firebase-client';
 import { isFirebaseConfigured } from '../firebase.config';
 import { Article } from '../models/article.model';
 import { Researcher } from '../models/researcher.model';
@@ -28,6 +29,7 @@ const DEFAULT_ARTICLES: Article[] = [
     author: 'Dr. A. Moussavou',
     date: '12 avril 2025',
     readTime: '8 min de lecture',
+    imageUrl: 'Img_iraf_01.jpg',
     featured: true,
   },
   {
@@ -148,6 +150,14 @@ export class ArticlesService {
     for (const { id, ...data } of items) {
       await addDoc(collection(db, name), { ...data, createdAt: serverTimestamp() });
     }
+  }
+
+  async uploadArticleImage(file: File): Promise<string> {
+    if (!isFirebaseConfigured()) throw new Error('Firebase non configuré — voir src/app/firebase.config.ts');
+    const path = `articles/${Date.now()}-${file.name}`;
+    const imageRef = ref(storage, path);
+    await uploadBytes(imageRef, file);
+    return getDownloadURL(imageRef);
   }
 
   async addArticle(article: Omit<Article, 'id'>): Promise<void> {
