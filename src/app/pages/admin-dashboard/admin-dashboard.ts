@@ -22,7 +22,7 @@ export class AdminDashboardComponent {
 
   avatarClasses: Researcher['avatarClass'][] = ['av-green', 'av-teal', 'av-amber', 'av-sage', 'av-olive', 'av-sky'];
 
-  articleForm = { tag: '', title: '', excerpt: '', contentText: '', author: '', date: '', readTime: '', imageUrl: '', sourceUrl: '', featured: false };
+  articleForm = { tag: '', title: '', excerpt: '', contentText: '', author: '', date: '', readTime: '', imageUrl: '', videoUrl: '', sourceUrl: '', featured: false };
   researcherForm = { initials: '', name: '', role: '', avatarClass: 'av-green' as Researcher['avatarClass'] };
 
   articleError = signal<string | null>(null);
@@ -48,10 +48,11 @@ export class AdminDashboardComponent {
         date: this.articleForm.date,
         readTime: this.articleForm.readTime,
         imageUrl: this.articleForm.imageUrl,
+        videoUrl: this.articleForm.videoUrl,
         sourceUrl: this.articleForm.sourceUrl,
         featured: this.articleForm.featured,
       });
-      this.articleForm = { tag: '', title: '', excerpt: '', contentText: '', author: '', date: '', readTime: '', imageUrl: '', sourceUrl: '', featured: false };
+      this.articleForm = { tag: '', title: '', excerpt: '', contentText: '', author: '', date: '', readTime: '', imageUrl: '', videoUrl: '', sourceUrl: '', featured: false };
     } catch (e) {
       this.articleError.set(e instanceof Error ? e.message : 'Erreur lors de l\'enregistrement.');
     } finally {

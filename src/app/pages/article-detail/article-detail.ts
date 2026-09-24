@@ -3,11 +3,12 @@ import { ActivatedRoute, RouterLink } from '@angular/router';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { map } from 'rxjs/operators';
 import { ArticlesService } from '../../services/articles.service';
+import { VideoEmbedComponent } from '../../components/video-embed/video-embed';
 
 @Component({
   selector: 'app-article-detail',
   standalone: true,
-  imports: [RouterLink],
+  imports: [RouterLink, VideoEmbedComponent],
   templateUrl: './article-detail.html',
   styleUrl: './article-detail.css',
 })

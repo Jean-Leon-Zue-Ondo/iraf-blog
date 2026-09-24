@@ -1,0 +1,14 @@
+@if (embed; as e) {
+  @if (e.kind === 'iframe') {
+    <iframe
+      class="video-embed-media"
+      [src]="e.safeUrl"
+      title="Vidéo"
+      frameborder="0"
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+      allowfullscreen
+    ></iframe>
+  } @else {
+    <video class="video-embed-media" [src]="e.url" controls></video>
+  }
+}

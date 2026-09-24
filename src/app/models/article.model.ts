@@ -8,6 +8,7 @@ export interface Article {
   date: string;
   readTime: string;
   imageUrl?: string;
+  videoUrl?: string;
   sourceUrl?: string;
   featured?: boolean;
 }

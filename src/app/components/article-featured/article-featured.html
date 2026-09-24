@@ -1,25 +1,50 @@
-<div class="article-featured">
-  <div class="article-img-placeholder">
-    @if (article.imageUrl) {
-      <img [src]="article.imageUrl" [alt]="article.title" />
-    }
-    <span class="article-img-tag">{{ article.tag }}</span>
-  </div>
-  <div class="article-body">
-    <div>
-      <span class="article-tag">{{ article.tag }}</span>
-      <h3 class="article-title">{{ article.title }}</h3>
-      <p class="article-excerpt">{{ article.excerpt }}</p>
+@if (current(); as article) {
+  <div class="article-featured">
+    <div class="article-img-placeholder">
+      @if (article.videoUrl) {
+        <div class="article-media-wrapper">
+          <app-video-embed [url]="article.videoUrl" />
+        </div>
+      } @else if (article.imageUrl) {
+        <img [src]="article.imageUrl" [alt]="article.title" />
+      }
+      <span class="article-img-tag">{{ article.tag }}</span>
+
+      @if (articles.length > 1) {
+        <button type="button" class="carousel-arrow carousel-arrow-prev" (click)="onPrev()" aria-label="Article précédent">‹</button>
+        <button type="button" class="carousel-arrow carousel-arrow-next" (click)="onNext()" aria-label="Article suivant">›</button>
+      }
     </div>
-    <div>
-      <div class="article-meta">
-        <span>{{ article.author }}</span>
-        <span class="meta-dot"></span>
-        <span>{{ article.date }}</span>
-        <span class="meta-dot"></span>
-        <span>{{ article.readTime }}</span>
+    <div class="article-body">
+      <div>
+        <span class="article-tag">{{ article.tag }}</span>
+        <h3 class="article-title">{{ article.title }}</h3>
+        <p class="article-excerpt">{{ article.excerpt }}</p>
       </div>
-      <a [routerLink]="['/publications', article.id]" class="read-more">Lire l'article complet →</a>
+      <div>
+        <div class="article-meta">
+          <span>{{ article.author }}</span>
+          <span class="meta-dot"></span>
+          <span>{{ article.date }}</span>
+          <span class="meta-dot"></span>
+          <span>{{ article.readTime }}</span>
+        </div>
+        <a [routerLink]="['/publications', article.id]" class="read-more">Lire l'article complet →</a>
+
+        @if (articles.length > 1) {
+          <div class="carousel-dots">
+            @for (a of articles; track a.id; let i = $index) {
+              <button
+                type="button"
+                class="carousel-dot"
+                [class.active]="i === currentIndex()"
+                (click)="goTo(i)"
+                [attr.aria-label]="'Aller à l\'article ' + (i + 1)"
+              ></button>
+            }
+          </div>
+        }
+      </div>
     </div>
   </div>
-</div>
+}

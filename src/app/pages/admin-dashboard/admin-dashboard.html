@@ -49,9 +49,14 @@
         <input type="url" name="imageUrl" [(ngModel)]="articleForm.imageUrl" placeholder="https://..." />
       </label>
 
-      @if (articleForm.imageUrl) {
+      @if (articleForm.imageUrl && !articleForm.videoUrl) {
         <img [src]="articleForm.imageUrl" alt="Aperçu de l'image" class="admin-image-preview" />
       }
+
+      <label class="admin-field">
+        <span>Lien vidéo (optionnel — YouTube, Vimeo, ou lien direct .mp4 ; remplace l'image ci-dessus si renseigné)</span>
+        <input type="url" name="videoUrl" [(ngModel)]="articleForm.videoUrl" placeholder="https://youtube.com/watch?v=..." />
+      </label>
 
       <label class="admin-field">
         <span>Lien vers la publication / l'article en ligne (optionnel)</span>
@@ -60,7 +65,7 @@
 
       <label class="admin-checkbox">
         <input type="checkbox" name="featured" [(ngModel)]="articleForm.featured" />
-        <span>Mettre à la une (page d'accueil)</span>
+        <span>Mettre à la une (plusieurs articles peuvent être cochés — ils apparaîtront en carrousel)</span>
       </label>
 
       @if (articleError()) {
@@ -78,6 +83,12 @@
           <div>
             <span class="admin-list-tag">{{ article.tag }}</span>
             <span class="admin-list-title">{{ article.title }}</span>
+            @if (article.featured) {
+              <span class="admin-list-badge">À la une</span>
+            }
+            @if (article.videoUrl) {
+              <span class="admin-list-badge">Vidéo</span>
+            }
           </div>
           <button type="button" class="admin-delete" (click)="removeArticle(article.id)">Supprimer</button>
         </div>

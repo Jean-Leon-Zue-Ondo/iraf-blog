@@ -14,7 +14,11 @@
       </div>
     </div>
 
-    @if (a.imageUrl) {
+    @if (a.videoUrl) {
+      <div class="article-detail-video-wrapper">
+        <app-video-embed [url]="a.videoUrl" />
+      </div>
+    } @else if (a.imageUrl) {
       <img class="article-detail-image" [src]="a.imageUrl" [alt]="a.title" />
     }
 

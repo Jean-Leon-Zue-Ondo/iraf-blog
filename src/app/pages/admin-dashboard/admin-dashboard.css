@@ -164,6 +164,17 @@
   margin-right: 8px;
 }
 
+.admin-list-badge {
+  display: inline-block;
+  background: #fdf0d5;
+  color: #a3670a;
+  font-size: 10px;
+  font-weight: 600;
+  padding: 2px 8px;
+  border-radius: 20px;
+  margin-left: 6px;
+}
+
 .admin-delete {
   background: none;
   border: none;

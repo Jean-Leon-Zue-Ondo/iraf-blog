@@ -89,8 +89,16 @@ export class ArticlesService {
   articles = this.articlesSig.asReadonly();
   researchers = this.researchersSig.asReadonly();
 
-  featured = computed(() => this.articlesSig().find((a) => a.featured) ?? this.articlesSig()[0]);
-  recentArticles = computed(() => this.articlesSig().filter((a) => !a.featured));
+  // Toutes les entrées marquées "featured" ; à défaut, la plus récente pour que la une ne soit jamais vide.
+  featuredArticles = computed(() => {
+    const marked = this.articlesSig().filter((a) => a.featured);
+    return marked.length > 0 ? marked : this.articlesSig().slice(0, 1);
+  });
+
+  recentArticles = computed(() => {
+    const featuredIds = new Set(this.featuredArticles().map((a) => a.id));
+    return this.articlesSig().filter((a) => !featuredIds.has(a.id));
+  });
 
   constructor() {
     if (isFirebaseConfigured()) {

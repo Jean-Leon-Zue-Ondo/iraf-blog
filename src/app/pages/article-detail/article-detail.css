@@ -65,6 +65,15 @@
   margin-bottom: 2rem;
 }
 
+.article-detail-video-wrapper {
+  aspect-ratio: 16 / 9;
+  width: 100%;
+  border-radius: 14px;
+  overflow: hidden;
+  margin-bottom: 2rem;
+  background: #0a1405;
+}
+
 .article-detail-body {
   font-family: 'Source Serif 4', serif;
   font-size: 17px;
