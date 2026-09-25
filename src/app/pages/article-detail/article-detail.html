@@ -1,0 +1,44 @@
+@if (article(); as a) {
+  <div class="page-container">
+    <a routerLink="/publications" class="back-link">← Retour aux publications</a>
+
+    <div class="article-detail-header">
+      <span class="article-tag">{{ a.tag }}</span>
+      <h1 class="article-detail-title">{{ a.title }}</h1>
+      <div class="article-meta">
+        <span>{{ a.author }}</span>
+        <span class="meta-dot"></span>
+        <span>{{ a.date }}</span>
+        <span class="meta-dot"></span>
+        <span>{{ a.readTime }}</span>
+      </div>
+    </div>
+
+    @if (a.videoUrl) {
+      <div class="article-detail-video-wrapper">
+        <app-video-embed [url]="a.videoUrl" />
+      </div>
+    } @else if (a.imageUrl) {
+      <img class="article-detail-image" [src]="a.imageUrl" [alt]="a.title" />
+    }
+
+    <div class="article-detail-body">
+      @for (paragraph of a.content; track paragraph) {
+        <p>{{ paragraph }}</p>
+      } @empty {
+        <p>{{ a.excerpt }}</p>
+      }
+    </div>
+
+    @if (a.sourceUrl) {
+      <a [href]="a.sourceUrl" target="_blank" rel="noopener" class="source-link">
+        Voir la publication en ligne →
+      </a>
+    }
+  </div>
+} @else {
+  <div class="page-container">
+    <p class="not-found">Article introuvable.</p>
+    <a routerLink="/publications" class="back-link">← Retour aux publications</a>
+  </div>
+}

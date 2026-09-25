@@ -49,6 +49,13 @@
   font-size: 12px;
 }
 
+.footer-bottom-link {
+  color: #5a8a3a;
+  text-decoration: none;
+}
+
+.footer-bottom-link:hover { color: #c0dd97; }
+
 @media (max-width: 900px) {
   .site-footer { grid-template-columns: 1fr; padding: 2rem; }
 }

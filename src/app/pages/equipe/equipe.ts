@@ -9,5 +9,5 @@ import { ArticlesService } from '../../services/articles.service';
 })
 export class EquipeComponent {
   private svc = inject(ArticlesService);
-  researchers = this.svc.getResearchers();
+  researchers = this.svc.researchers;
 }

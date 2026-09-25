@@ -1,6 +1,6 @@
 <div class="sidebar-card">
   <div class="sidebar-title">Chercheurs actifs</div>
-  @for (r of researchers; track r.name) {
+  @for (r of researchers(); track r.id) {
     <div class="researcher-item">
       <div class="researcher-avatar" [class]="r.avatarClass">{{ r.initials }}</div>
       <div>

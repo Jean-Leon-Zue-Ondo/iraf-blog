@@ -1,4 +1,5 @@
 export interface Researcher {
+  id: string;
   initials: string;
   name: string;
   role: string;

@@ -1,0 +1,148 @@
+<div class="page-container">
+  <div class="admin-header">
+    <div>
+      <div class="page-eyebrow">Espace privé</div>
+      <h1 class="page-title">Administration IRAF</h1>
+    </div>
+    <button type="button" class="admin-logout" (click)="logout()">Se déconnecter</button>
+  </div>
+
+  <section class="admin-section">
+    <h2 class="admin-section-title">Ajouter un article</h2>
+    <form class="admin-form" (ngSubmit)="submitArticle()">
+      <div class="admin-grid">
+        <label class="admin-field">
+          <span>Thème (tag)</span>
+          <input type="text" name="tag" [(ngModel)]="articleForm.tag" required placeholder="Ex. Foresterie" />
+        </label>
+        <label class="admin-field">
+          <span>Auteur</span>
+          <input type="text" name="author" [(ngModel)]="articleForm.author" required placeholder="Ex. Dr. A. Moussavou" />
+        </label>
+        <label class="admin-field">
+          <span>Date</span>
+          <input type="text" name="date" [(ngModel)]="articleForm.date" required placeholder="Ex. 20 septembre 2026" />
+        </label>
+        <label class="admin-field">
+          <span>Temps de lecture</span>
+          <input type="text" name="readTime" [(ngModel)]="articleForm.readTime" required placeholder="Ex. 6 min de lecture" />
+        </label>
+      </div>
+
+      <label class="admin-field">
+        <span>Titre</span>
+        <input type="text" name="title" [(ngModel)]="articleForm.title" required />
+      </label>
+
+      <label class="admin-field">
+        <span>Résumé (affiché sur les listes)</span>
+        <textarea name="excerpt" [(ngModel)]="articleForm.excerpt" rows="2"></textarea>
+      </label>
+
+      <label class="admin-field">
+        <span>Contenu complet (un paragraphe par ligne)</span>
+        <textarea name="contentText" [(ngModel)]="articleForm.contentText" rows="5"></textarea>
+      </label>
+
+      <label class="admin-field">
+        <span>Lien de l'image de couverture (optionnel — héberge-la sur Imgur, Drive public, etc.)</span>
+        <input type="url" name="imageUrl" [(ngModel)]="articleForm.imageUrl" placeholder="https://..." />
+      </label>
+
+      @if (articleForm.imageUrl && !articleForm.videoUrl) {
+        <img [src]="articleForm.imageUrl" alt="Aperçu de l'image" class="admin-image-preview" />
+      }
+
+      <label class="admin-field">
+        <span>Lien vidéo (optionnel — YouTube, Vimeo, ou lien direct .mp4 ; remplace l'image ci-dessus si renseigné)</span>
+        <input type="url" name="videoUrl" [(ngModel)]="articleForm.videoUrl" placeholder="https://youtube.com/watch?v=..." />
+      </label>
+
+      <label class="admin-field">
+        <span>Lien vers la publication / l'article en ligne (optionnel)</span>
+        <input type="url" name="sourceUrl" [(ngModel)]="articleForm.sourceUrl" placeholder="https://..." />
+      </label>
+
+      <label class="admin-checkbox">
+        <input type="checkbox" name="featured" [(ngModel)]="articleForm.featured" />
+        <span>Mettre à la une (plusieurs articles peuvent être cochés — ils apparaîtront en carrousel)</span>
+      </label>
+
+      @if (articleError()) {
+        <p class="admin-error">{{ articleError() }}</p>
+      }
+
+      <button type="submit" class="admin-btn" [disabled]="articleSaving()">
+        {{ articleSaving() ? 'Enregistrement…' : 'Publier l\'article' }}
+      </button>
+    </form>
+
+    <div class="admin-list">
+      @for (article of articles(); track article.id) {
+        <div class="admin-list-item">
+          <div>
+            <span class="admin-list-tag">{{ article.tag }}</span>
+            <span class="admin-list-title">{{ article.title }}</span>
+            @if (article.featured) {
+              <span class="admin-list-badge">À la une</span>
+            }
+            @if (article.videoUrl) {
+              <span class="admin-list-badge">Vidéo</span>
+            }
+          </div>
+          <button type="button" class="admin-delete" (click)="removeArticle(article.id)">Supprimer</button>
+        </div>
+      }
+    </div>
+  </section>
+
+  <section class="admin-section">
+    <h2 class="admin-section-title">Ajouter un chercheur</h2>
+    <form class="admin-form" (ngSubmit)="submitResearcher()">
+      <div class="admin-grid">
+        <label class="admin-field">
+          <span>Initiales</span>
+          <input type="text" name="initials" [(ngModel)]="researcherForm.initials" required maxlength="2" placeholder="Ex. AM" />
+        </label>
+        <label class="admin-field">
+          <span>Couleur d'avatar</span>
+          <select name="avatarClass" [(ngModel)]="researcherForm.avatarClass">
+            @for (c of avatarClasses; track c) {
+              <option [value]="c">{{ c }}</option>
+            }
+          </select>
+        </label>
+      </div>
+
+      <label class="admin-field">
+        <span>Nom</span>
+        <input type="text" name="name" [(ngModel)]="researcherForm.name" required placeholder="Ex. Dr. A. Moussavou" />
+      </label>
+
+      <label class="admin-field">
+        <span>Spécialité / rôle</span>
+        <input type="text" name="role" [(ngModel)]="researcherForm.role" required placeholder="Ex. Agronomie · Génétique végétale" />
+      </label>
+
+      @if (researcherError()) {
+        <p class="admin-error">{{ researcherError() }}</p>
+      }
+
+      <button type="submit" class="admin-btn" [disabled]="researcherSaving()">
+        {{ researcherSaving() ? 'Enregistrement…' : 'Ajouter le chercheur' }}
+      </button>
+    </form>
+
+    <div class="admin-list">
+      @for (r of researchers(); track r.id) {
+        <div class="admin-list-item">
+          <div>
+            <span class="admin-list-tag">{{ r.initials }}</span>
+            <span class="admin-list-title">{{ r.name }} — {{ r.role }}</span>
+          </div>
+          <button type="button" class="admin-delete" (click)="removeResearcher(r.id)">Supprimer</button>
+        </div>
+      }
+    </div>
+  </section>
+</div>

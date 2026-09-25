@@ -4,7 +4,7 @@
     <a routerLink="/publications" class="see-all">Tous les articles →</a>
   </div>
 
-  <app-article-featured [article]="featured" />
+  <app-article-featured [articles]="featured()" />
 
   <div class="section-header" style="margin-top: 2.5rem;">
     <h2 class="section-title">Dernières publications</h2>
@@ -12,7 +12,7 @@
   </div>
 
   <div class="article-list-items">
-    @for (article of articles; track article.id; let i = $index) {
+    @for (article of articles(); track article.id; let i = $index) {
       <app-article-mini [article]="article" [index]="i" />
     }
   </div>
