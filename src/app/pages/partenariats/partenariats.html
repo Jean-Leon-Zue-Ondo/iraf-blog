@@ -1,0 +1,25 @@
+<div class="page-container">
+  <div class="page-header">
+    <div class="page-eyebrow">Coopération scientifique & institutionnelle</div>
+    <h1 class="page-title">Partenariats</h1>
+    <p class="page-desc">
+      L'IRAF collabore avec des institutions de recherche, des universités, des bailleurs de fonds
+      et des organisations de la société civile pour renforcer l'impact de ses travaux.
+    </p>
+    <p class="page-note">Contenu de démonstration — à remplacer par les partenaires réels depuis l'espace /admin.</p>
+  </div>
+
+  <div class="partners-grid">
+    @for (p of partnerships(); track p.id) {
+      <div class="partner-card">
+        <span class="partner-type">{{ p.type }}</span>
+        <h3 class="partner-name">{{ p.name }}</h3>
+        <div class="partner-country">{{ p.country }}</div>
+        <p class="partner-desc">{{ p.description }}</p>
+        @if (p.websiteUrl) {
+          <a [href]="p.websiteUrl" target="_blank" rel="noopener" class="partner-link">Visiter le site →</a>
+        }
+      </div>
+    }
+  </div>
+</div>

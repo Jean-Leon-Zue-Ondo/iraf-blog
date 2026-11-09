@@ -145,4 +145,275 @@
       }
     </div>
   </section>
+
+  <section class="admin-section">
+    <h2 class="admin-section-title">Ajouter un partenaire</h2>
+    <form class="admin-form" (ngSubmit)="submitPartnership()">
+      <div class="admin-grid">
+        <label class="admin-field">
+          <span>Type</span>
+          <select name="partnershipType" [(ngModel)]="partnershipForm.type">
+            @for (t of partnershipTypes; track t) {
+              <option [value]="t">{{ t }}</option>
+            }
+          </select>
+        </label>
+        <label class="admin-field">
+          <span>Pays / zone</span>
+          <input type="text" name="partnershipCountry" [(ngModel)]="partnershipForm.country" required placeholder="Ex. Gabon" />
+        </label>
+      </div>
+
+      <label class="admin-field">
+        <span>Nom du partenaire</span>
+        <input type="text" name="partnershipName" [(ngModel)]="partnershipForm.name" required />
+      </label>
+
+      <label class="admin-field">
+        <span>Description</span>
+        <textarea name="partnershipDescription" [(ngModel)]="partnershipForm.description" rows="2"></textarea>
+      </label>
+
+      <label class="admin-field">
+        <span>Site web (optionnel)</span>
+        <input type="url" name="partnershipWebsiteUrl" [(ngModel)]="partnershipForm.websiteUrl" placeholder="https://..." />
+      </label>
+
+      @if (partnershipError()) {
+        <p class="admin-error">{{ partnershipError() }}</p>
+      }
+
+      <button type="submit" class="admin-btn" [disabled]="partnershipSaving()">
+        {{ partnershipSaving() ? 'Enregistrement…' : 'Ajouter le partenaire' }}
+      </button>
+    </form>
+
+    <div class="admin-list">
+      @for (p of partnerships(); track p.id) {
+        <div class="admin-list-item">
+          <div>
+            <span class="admin-list-tag">{{ p.type }}</span>
+            <span class="admin-list-title">{{ p.name }}</span>
+          </div>
+          <button type="button" class="admin-delete" (click)="removePartnership(p.id)">Supprimer</button>
+        </div>
+      }
+    </div>
+  </section>
+
+  <section class="admin-section">
+    <h2 class="admin-section-title">Ajouter une activité</h2>
+    <form class="admin-form" (ngSubmit)="submitActivity()">
+      <div class="admin-grid">
+        <label class="admin-field">
+          <span>Catégorie</span>
+          <select name="activityCategory" [(ngModel)]="activityForm.category">
+            @for (c of activityCategories; track c) {
+              <option [value]="c">{{ c }}</option>
+            }
+          </select>
+        </label>
+        <label class="admin-field">
+          <span>Date</span>
+          <input type="text" name="activityDate" [(ngModel)]="activityForm.date" required placeholder="Ex. Mars 2026" />
+        </label>
+      </div>
+
+      <label class="admin-field">
+        <span>Titre</span>
+        <input type="text" name="activityTitle" [(ngModel)]="activityForm.title" required />
+      </label>
+
+      <label class="admin-field">
+        <span>Lieu</span>
+        <input type="text" name="activityLocation" [(ngModel)]="activityForm.location" required />
+      </label>
+
+      <label class="admin-field">
+        <span>Description</span>
+        <textarea name="activityDescription" [(ngModel)]="activityForm.description" rows="2"></textarea>
+      </label>
+
+      <label class="admin-field">
+        <span>Lien de l'image (optionnel)</span>
+        <input type="url" name="activityImageUrl" [(ngModel)]="activityForm.imageUrl" placeholder="https://..." />
+      </label>
+
+      @if (activityError()) {
+        <p class="admin-error">{{ activityError() }}</p>
+      }
+
+      <button type="submit" class="admin-btn" [disabled]="activitySaving()">
+        {{ activitySaving() ? 'Enregistrement…' : "Ajouter l'activité" }}
+      </button>
+    </form>
+
+    <div class="admin-list">
+      @for (a of activities(); track a.id) {
+        <div class="admin-list-item">
+          <div>
+            <span class="admin-list-tag">{{ a.category }}</span>
+            <span class="admin-list-title">{{ a.title }}</span>
+          </div>
+          <button type="button" class="admin-delete" (click)="removeActivity(a.id)">Supprimer</button>
+        </div>
+      }
+    </div>
+  </section>
+
+  <section class="admin-section">
+    <h2 class="admin-section-title">Ajouter une actualité</h2>
+    <form class="admin-form" (ngSubmit)="submitNews()">
+      <div class="admin-grid">
+        <label class="admin-field">
+          <span>Catégorie</span>
+          <select name="newsCategory" [(ngModel)]="newsForm.category">
+            @for (c of newsCategories; track c) {
+              <option [value]="c">{{ c }}</option>
+            }
+          </select>
+        </label>
+        <label class="admin-field">
+          <span>Date</span>
+          <input type="text" name="newsDate" [(ngModel)]="newsForm.date" required placeholder="Ex. 10 janvier 2026" />
+        </label>
+      </div>
+
+      <label class="admin-field">
+        <span>Titre</span>
+        <input type="text" name="newsTitle" [(ngModel)]="newsForm.title" required />
+      </label>
+
+      <label class="admin-field">
+        <span>Résumé</span>
+        <textarea name="newsExcerpt" [(ngModel)]="newsForm.excerpt" rows="2"></textarea>
+      </label>
+
+      <label class="admin-field">
+        <span>Lien de l'image (optionnel)</span>
+        <input type="url" name="newsImageUrl" [(ngModel)]="newsForm.imageUrl" placeholder="https://..." />
+      </label>
+
+      @if (newsError()) {
+        <p class="admin-error">{{ newsError() }}</p>
+      }
+
+      <button type="submit" class="admin-btn" [disabled]="newsSaving()">
+        {{ newsSaving() ? 'Enregistrement…' : "Publier l'actualité" }}
+      </button>
+    </form>
+
+    <div class="admin-list">
+      @for (n of news(); track n.id) {
+        <div class="admin-list-item">
+          <div>
+            <span class="admin-list-tag">{{ n.category }}</span>
+            <span class="admin-list-title">{{ n.title }}</span>
+          </div>
+          <button type="button" class="admin-delete" (click)="removeNews(n.id)">Supprimer</button>
+        </div>
+      }
+    </div>
+  </section>
+
+  <section class="admin-section">
+    <h2 class="admin-section-title">Ajouter un programme de formation</h2>
+    <form class="admin-form" (ngSubmit)="submitTraining()">
+      <div class="admin-grid">
+        <label class="admin-field">
+          <span>Niveau</span>
+          <select name="trainingLevel" [(ngModel)]="trainingForm.level">
+            @for (l of trainingLevels; track l) {
+              <option [value]="l">{{ l }}</option>
+            }
+          </select>
+        </label>
+        <label class="admin-field">
+          <span>Durée</span>
+          <input type="text" name="trainingDuration" [(ngModel)]="trainingForm.duration" required placeholder="Ex. 2 ans" />
+        </label>
+      </div>
+
+      <label class="admin-field">
+        <span>Titre</span>
+        <input type="text" name="trainingTitle" [(ngModel)]="trainingForm.title" required />
+      </label>
+
+      <label class="admin-field">
+        <span>Description</span>
+        <textarea name="trainingDescription" [(ngModel)]="trainingForm.description" rows="2"></textarea>
+      </label>
+
+      <label class="admin-field">
+        <span>Contact (email, optionnel)</span>
+        <input type="email" name="trainingContactInfo" [(ngModel)]="trainingForm.contactInfo" placeholder="formation@iraf-gabon.org" />
+      </label>
+
+      @if (trainingError()) {
+        <p class="admin-error">{{ trainingError() }}</p>
+      }
+
+      <button type="submit" class="admin-btn" [disabled]="trainingSaving()">
+        {{ trainingSaving() ? 'Enregistrement…' : 'Ajouter le programme' }}
+      </button>
+    </form>
+
+    <div class="admin-list">
+      @for (t of trainings(); track t.id) {
+        <div class="admin-list-item">
+          <div>
+            <span class="admin-list-tag">{{ t.level }}</span>
+            <span class="admin-list-title">{{ t.title }}</span>
+          </div>
+          <button type="button" class="admin-delete" (click)="removeTraining(t.id)">Supprimer</button>
+        </div>
+      }
+    </div>
+  </section>
+
+  <section class="admin-section">
+    <h2 class="admin-section-title">Ajouter un axe de programmation de la recherche</h2>
+    <form class="admin-form" (ngSubmit)="submitResearchProgram()">
+      <div class="admin-grid">
+        <label class="admin-field">
+          <span>Période</span>
+          <input type="text" name="researchProgramPeriod" [(ngModel)]="researchProgramForm.period" required placeholder="Ex. 2026 – 2029" />
+        </label>
+        <label class="admin-field">
+          <span>Axe</span>
+          <input type="text" name="researchProgramAxis" [(ngModel)]="researchProgramForm.axis" required />
+        </label>
+      </div>
+
+      <label class="admin-field">
+        <span>Objectifs</span>
+        <textarea name="researchProgramObjectives" [(ngModel)]="researchProgramForm.objectives" rows="2"></textarea>
+      </label>
+
+      <label class="admin-field">
+        <span>Description</span>
+        <textarea name="researchProgramDescription" [(ngModel)]="researchProgramForm.description" rows="2"></textarea>
+      </label>
+
+      @if (researchProgramError()) {
+        <p class="admin-error">{{ researchProgramError() }}</p>
+      }
+
+      <button type="submit" class="admin-btn" [disabled]="researchProgramSaving()">
+        {{ researchProgramSaving() ? 'Enregistrement…' : "Ajouter l'axe" }}
+      </button>
+    </form>
+
+    <div class="admin-list">
+      @for (rp of researchPrograms(); track rp.id) {
+        <div class="admin-list-item">
+          <div>
+            <span class="admin-list-tag">{{ rp.period }}</span>
+            <span class="admin-list-title">{{ rp.axis }}</span>
+          </div>
+          <button type="button" class="admin-delete" (click)="removeResearchProgram(rp.id)">Supprimer</button>
+        </div>
+      }
+    </div>
+  </section>
 </div>

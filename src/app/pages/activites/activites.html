@@ -1,0 +1,24 @@
+<div class="page-container">
+  <div class="page-header">
+    <div class="page-eyebrow">Vie institutionnelle</div>
+    <h1 class="page-title">Activités</h1>
+    <p class="page-desc">
+      Missions de terrain, ateliers, conférences et temps forts de la vie scientifique de l'IRAF.
+    </p>
+    <p class="page-note">Contenu de démonstration — à remplacer par les activités réelles depuis l'espace /admin.</p>
+  </div>
+
+  <div class="activities-list">
+    @for (a of activities(); track a.id) {
+      <div class="activity-card">
+        <div class="activity-date">{{ a.date }}</div>
+        <div class="activity-body">
+          <span class="activity-category">{{ a.category }}</span>
+          <h3 class="activity-title">{{ a.title }}</h3>
+          <div class="activity-location">📍 {{ a.location }}</div>
+          <p class="activity-desc">{{ a.description }}</p>
+        </div>
+      </div>
+    }
+  </div>
+</div>

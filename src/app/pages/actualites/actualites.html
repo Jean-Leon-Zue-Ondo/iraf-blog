@@ -1,0 +1,28 @@
+<div class="page-container">
+  <div class="page-header">
+    <div class="page-eyebrow">À la une de l'institut</div>
+    <h1 class="page-title">Actualités</h1>
+    <p class="page-desc">
+      Annonces, événements, distinctions et nouveaux partenariats : suivez l'actualité de l'IRAF.
+    </p>
+    <p class="page-note">Contenu de démonstration — à remplacer par les actualités réelles depuis l'espace /admin.</p>
+  </div>
+
+  <div class="news-list">
+    @for (n of news(); track n.id) {
+      <div class="news-card">
+        @if (n.imageUrl) {
+          <img [src]="n.imageUrl" alt="" class="news-image" />
+        }
+        <div class="news-body">
+          <div class="news-meta">
+            <span class="news-category">{{ n.category }}</span>
+            <span class="news-date">{{ n.date }}</span>
+          </div>
+          <h3 class="news-title">{{ n.title }}</h3>
+          <p class="news-excerpt">{{ n.excerpt }}</p>
+        </div>
+      </div>
+    }
+  </div>
+</div>

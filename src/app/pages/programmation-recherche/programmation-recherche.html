@@ -1,0 +1,24 @@
+<div class="page-container">
+  <div class="page-header">
+    <div class="page-eyebrow">Stratégie scientifique pluriannuelle</div>
+    <h1 class="page-title">Programmation de la Recherche</h1>
+    <p class="page-desc">
+      Les grands axes programmatiques qui structurent les travaux de l'IRAF sur le moyen terme,
+      avec leurs objectifs et leur période de réalisation.
+    </p>
+    <p class="page-note">Contenu de démonstration — à remplacer par la programmation réelle depuis l'espace /admin.</p>
+  </div>
+
+  <div class="programs-list">
+    @for (rp of researchPrograms(); track rp.id) {
+      <div class="program-card">
+        <div class="program-period">{{ rp.period }}</div>
+        <div class="program-body">
+          <h3 class="program-axis">{{ rp.axis }}</h3>
+          <p class="program-objectives"><strong>Objectifs —</strong> {{ rp.objectives }}</p>
+          <p class="program-desc">{{ rp.description }}</p>
+        </div>
+      </div>
+    }
+  </div>
+</div>
