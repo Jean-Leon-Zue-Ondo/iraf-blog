@@ -1,0 +1,25 @@
+<div class="page-container">
+  <div class="page-header">
+    <div class="page-eyebrow">Transmission des savoirs</div>
+    <h1 class="page-title">Formation & Éducation</h1>
+    <p class="page-desc">
+      L'IRAF forme la relève scientifique : doctorats, masters, stages et formations continues
+      en agronomie, foresterie et écologie.
+    </p>
+    <p class="page-note">Contenu de démonstration — à remplacer par les programmes réels depuis l'espace /admin.</p>
+  </div>
+
+  <div class="training-grid">
+    @for (t of trainings(); track t.id) {
+      <div class="training-card">
+        <span class="training-level">{{ t.level }}</span>
+        <h3 class="training-title">{{ t.title }}</h3>
+        <div class="training-duration">⏱ {{ t.duration }}</div>
+        <p class="training-desc">{{ t.description }}</p>
+        @if (t.contactInfo) {
+          <a [href]="'mailto:' + t.contactInfo" class="training-contact">{{ t.contactInfo }}</a>
+        }
+      </div>
+    }
+  </div>
+</div>
